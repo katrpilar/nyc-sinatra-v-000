@@ -9,17 +9,18 @@ class FiguresController < ApplicationController
     erb :'/figures/new'
   end
 
-  get '/figures/:id/edit' do
-    @figure = Figure.find_by_id(params[:id])
-    erb :'/figures/edit'
-  end
-  
   get '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
     @landmarks = @figure.landmarks
     @titles = @figure.titles
     erb :'/figures/show'
   end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find_by_id(params[:id])
+    erb :'/figures/edit'
+  end
+
 
   post '/figures' do
     @figure = Figure.create(name: params[:figure][:name])
